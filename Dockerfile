@@ -1,7 +1,12 @@
-FROM node:stretch
+FROM node:buster
 LABEL Lawrence Stubbs <technoexpressnet@gmail.com>
 
-RUN apt-get update && apt-get -y install mongodb sudo
+RUN apt-get update && apt-get -y install sudo
+RUN apt-get -y install sudo dirmngr gnupg apt-transport-https software-properties-common ca-certificates curl
+RUN curl -fsSL https://www.mongodb.org/static/pgp/server-4.2.asc | sudo apt-key add -
+RUN sudo add-apt-repository 'deb https://repo.mongodb.org/apt/debian buster/mongodb-org/4.2 main'
+RUN sudo apt-get -y update
+RUN apt-get -y install mongodb-org
 
 COPY startmeshcentral.sh /
 RUN adduser --quiet meshserver \

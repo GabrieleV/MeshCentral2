@@ -5,7 +5,10 @@
         "MpsPort": 4443,
         "AllowLoginToken": true,
         "AllowFraming": true,
-        "WebRTC": true
+        "WebRTC": true,
+		"Cert": "host.ltd",
+		"Wanonly": true
+
 	},
     "letsencrypt": {
         "email": "mail@host",

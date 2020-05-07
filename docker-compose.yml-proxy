@@ -1,0 +1,47 @@
+#docker run \
+# --name meshcentral \
+# -p 25:25/tcp -p 80:80/tcp -p 443:443/tcp -p 4443:4443/tcp -p 27017-27018/tcp \
+# -v meshcentral-data:/home/meshserver/meshcentral-data -v meshcentral-files:/home/meshserver/meshcentral-files \
+# -e PORT=443 -e REDIRPORT=80 -e MPSPORT=4443 -e EMAIL=mail@host -e HOST=host.ltd \
+# -e SMTP=smtp.host.ltd -e USER=smtp@user -e PASS=smtppass! \
+# -e DB=netdb -e MONGODB=mongodb://127.0.0.1:27017/meshcentral -e MONGODBCOL=meshcentral \
+# --hostname=mesh.host.name --rm meshcentral
+
+version: '3.3'
+services:
+  meshcentral:
+    image: meshcentral
+    #restart: always
+    container_name: meshcentral
+    hostname: meshcentral
+    environment:
+      - PORT=443
+      - REDIRPORT=80
+      - MPSPORT=4443
+      - EMAIL=admin@rvmgroup.it
+      - HOST=bos.diesis.eu
+      - SMTP=cloud02.rvmgroup.it
+      - USER=compiere@compiere.it
+      - PASS=Pippuzzo2020
+      - DB=netdb
+      - MONGODB=mongodb://127.0.0.1:27017/meshcentral
+      - MONGODBCOL=meshcentral
+    ports:
+      - "2525:25"
+      - "8080:80"
+      - "4430:443"
+      - "4443:4443"
+      - "27017:27017"
+      - "27018:27018"
+      # <Port exposed> : < MySQL Port running inside container>
+    #expose:
+      # Opens port 3306 on the container
+      #- '3306'
+      # Where our data will be persisted
+    volumes:
+      - meshcentral-data:/home/meshserver/meshcentral-data
+      - meshcentral-files:/home/meshserver/meshcentral-files
+      
+volumes:
+  meshcentral-data:
+  meshcentral-files:

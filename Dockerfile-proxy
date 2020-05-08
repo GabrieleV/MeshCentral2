@@ -15,7 +15,7 @@ RUN adduser --quiet meshserver \
 	&& mv -f /startmeshcentral.sh /home/meshserver/meshcentral-data/startmeshcentral.sh
 
 COPY package.json /home/meshserver/
-COPY config.json /home/meshserver/meshcentral-data/
+COPY config.json-proxy /home/meshserver/meshcentral-data/config.json
 RUN su - meshserver \
 	&& cd /home/meshserver \
     && npm install meshcentral 

@@ -1,16 +1,14 @@
 {
     "settings": {
         "Port": 443,
-		"AliasPort": 4430,
         "RedirPort": 80,
-        "RedirPortAlias": 8080,
         "MpsPort": 4443,
         "AllowLoginToken": true,
         "AllowFraming": true,
         "WebRTC": true,
 		"Cert": "host.ltd",
-		"Wanonly": true,
-		"IgnoreAgentHashCheck": true
+		"Wanonly": true
+
 	},
     "letsencrypt": {
         "email": "mail@host",

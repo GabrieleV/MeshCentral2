@@ -22,7 +22,7 @@ services:
       - HOST=bos.diesis.eu
       - SMTP=cloud02.rvmgroup.it
       - USER=compiere@compiere.it
-      - PASS=Pippuzzo2020
+      - PASS=Secret
       - DB=netdb
       - MONGODB=mongodb://127.0.0.1:27017/meshcentral
       - MONGODBCOL=meshcentral
